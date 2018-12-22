@@ -341,10 +341,10 @@ namespace TFTDisplay {
         // we are going to manually implement the RAMWR command here because
         // we have custom parameters. See comments in tftCom for details
         // of what’s going on here.
-        pins.digitalWritePin(DigitalPin.P1, 0); // command/data = command
+        pins.digitalWritePin(DigitalPin.P4, 0); // command/data = command
         pins.digitalWritePin(DigitalPin.P16, 0); // select the TFT as SPI target
         pins.spiWrite(TftCom.RAMWR);
-        pins.digitalWritePin(DigitalPin.P1, 1); // command/data = data
+        pins.digitalWritePin(DigitalPin.P4, 1); // command/data = data
 
         for (let indexY = height; indexY > 0; indexY--) {
             for (let indexX = width; indexX > 0; indexX--) {
@@ -354,7 +354,7 @@ namespace TFTDisplay {
         }
 
         pins.digitalWritePin(DigitalPin.P16, 1) // de-elect the TFT as SPI target
-        pins.digitalWritePin(DigitalPin.P1, 0) // command/data = command
+        pins.digitalWritePin(DigitalPin.P4, 0) // command/data = command
     }
 
     /**

@@ -172,14 +172,14 @@ namespace TFTDisplay {
         }
 
         // let the TFT know we’re sending a command (rather than data)
-        pins.digitalWritePin(DigitalPin.P1, 0) // command/data = command
+        pins.digitalWritePin(DigitalPin.P4, 0) // command/data = command
         // select the TFT controller
         pins.digitalWritePin(DigitalPin.P16, 0) // select the TFT as SPI target
 
         pins.spiWrite(command)
 
         // let the TFT know we’re sending data bytes (rather than a command)
-        pins.digitalWritePin(DigitalPin.P1, 1) // command/data = data
+        pins.digitalWritePin(DigitalPin.P4, 1) // command/data = data
 
         for (let dataItem of params) {
             pins.spiWrite(dataItem)
@@ -189,7 +189,7 @@ namespace TFTDisplay {
         pins.digitalWritePin(DigitalPin.P16, 1) // de-elect the TFT as SPI target
 
         // restore pin to zero (for tidiness - not required)
-        pins.digitalWritePin(DigitalPin.P1, 0) // command/data = command
+        pins.digitalWritePin(DigitalPin.P4, 0) // command/data = command
     }
 
     /**
